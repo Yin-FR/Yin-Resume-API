@@ -7,6 +7,7 @@ class Education(db.Document):
     school_link = db.StringField()
     school_pic = db.StringField()
     diploma = db.StringField()
+    start_time = db.StringField()
     graduation_time = db.StringField()
     desc = db.StringField()
     meta = {'collection': 'education'}

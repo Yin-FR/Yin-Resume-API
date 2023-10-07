@@ -10,7 +10,7 @@ from yin_resume_api.models.social_network import SocialNetwork  # noqa: E501
 from yin_resume_api.models.work import Work  # noqa: E501
 from yin_resume_api import util
 
-from yin_resume_api.bussiness_logical.bl_resume import *
+from yin_resume_api.bussiness_logical.bl_resume import bl_get_all_descs, bl_get_all_educations, bl_get_all_works, bl_get_all_skills, bl_get_all_social_networks
 
 
 def get_descs(name_id=None):  # noqa: E501

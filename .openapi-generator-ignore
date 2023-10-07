@@ -27,6 +27,6 @@
 #!docs/README.md
 
 
-*/.gitignore
+.gitignore
 
-*/requirements.txt
+requirements.txt

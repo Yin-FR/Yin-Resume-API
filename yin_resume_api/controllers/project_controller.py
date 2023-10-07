@@ -1,4 +1,4 @@
-from yin_resume_api.bussiness_logical.bl_project import *
+from yin_resume_api.bussiness_logical.bl_project import bl_get_all_projects
 
 def get_projects(name_id=None):  # noqa: E501
     """Get the projects information by ID

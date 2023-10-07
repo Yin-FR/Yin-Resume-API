@@ -1,0 +1,1 @@
+npx @openapitools/openapi-generator-cli generate -i ./yin_resume_api/openapi/openapi.yaml -g python-flask -o . --package-name=yin_resume_api
