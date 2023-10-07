@@ -1,4 +1,4 @@
-from yin_resume_api.utils.orm_mongodb.project import Project
+from yin_resume_api.orm_mongodb.project import Project
 from flask import jsonify
 
 

@@ -5,7 +5,7 @@ from flask_mongoengine import MongoEngine
 import os
 from flask_cors import CORS
 
-from yin_resume_api.utils.orm_mongodb import db
+from yin_resume_api.orm_mongodb import db
 
 
 MONGODB_USERNAME = os.getenv("MONGODB_USERNAME")

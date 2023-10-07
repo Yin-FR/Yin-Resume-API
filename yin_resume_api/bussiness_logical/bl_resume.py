@@ -1,8 +1,8 @@
-from yin_resume_api.utils.orm_mongodb.desc import Desc
-from yin_resume_api.utils.orm_mongodb.work import Work
-from yin_resume_api.utils.orm_mongodb.education import Education
-from yin_resume_api.utils.orm_mongodb.skill import Skill
-from yin_resume_api.utils.orm_mongodb.social_network import Social_Network
+from yin_resume_api.orm_mongodb.desc import Desc
+from yin_resume_api.orm_mongodb.work import Work
+from yin_resume_api.orm_mongodb.education import Education
+from yin_resume_api.orm_mongodb.skill import Skill
+from yin_resume_api.orm_mongodb.social_network import Social_Network
 from flask import jsonify
 
 

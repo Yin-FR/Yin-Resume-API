@@ -1,9 +1,7 @@
 .dockerignore
-.gitignore
 .travis.yml
 Dockerfile
 git_push.sh
-requirements.txt
 setup.py
 test-requirements.txt
 tox.ini

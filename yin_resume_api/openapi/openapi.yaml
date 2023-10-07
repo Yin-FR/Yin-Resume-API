@@ -323,6 +323,7 @@ components:
         school_link: MIT.com
         school_pic: MIT-logo.png
         diploma: Bachelor of Engineering
+        start_time: July 2006
         graduation_time: June 2009
         desc: I have learnt Computer Science
       properties:
@@ -335,6 +336,8 @@ components:
         school_pic:
           type: string
         diploma:
+          type: string
+        start_time:
           type: string
         graduation_time:
           type: string

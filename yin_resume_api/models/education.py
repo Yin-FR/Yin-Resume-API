@@ -12,7 +12,7 @@ class Education(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, name_id=None, school_name=None, school_link=None, school_pic=None, diploma=None, graduation_time=None, desc=None):  # noqa: E501
+    def __init__(self, name_id=None, school_name=None, school_link=None, school_pic=None, diploma=None, start_time=None, graduation_time=None, desc=None):  # noqa: E501
         """Education - a model defined in OpenAPI
 
         :param name_id: The name_id of this Education.  # noqa: E501
@@ -25,6 +25,8 @@ class Education(Model):
         :type school_pic: str
         :param diploma: The diploma of this Education.  # noqa: E501
         :type diploma: str
+        :param start_time: The start_time of this Education.  # noqa: E501
+        :type start_time: str
         :param graduation_time: The graduation_time of this Education.  # noqa: E501
         :type graduation_time: str
         :param desc: The desc of this Education.  # noqa: E501
@@ -36,6 +38,7 @@ class Education(Model):
             'school_link': str,
             'school_pic': str,
             'diploma': str,
+            'start_time': str,
             'graduation_time': str,
             'desc': str
         }
@@ -46,6 +49,7 @@ class Education(Model):
             'school_link': 'school_link',
             'school_pic': 'school_pic',
             'diploma': 'diploma',
+            'start_time': 'start_time',
             'graduation_time': 'graduation_time',
             'desc': 'desc'
         }
@@ -55,6 +59,7 @@ class Education(Model):
         self._school_link = school_link
         self._school_pic = school_pic
         self._diploma = diploma
+        self._start_time = start_time
         self._graduation_time = graduation_time
         self._desc = desc
 
@@ -173,6 +178,27 @@ class Education(Model):
         """
 
         self._diploma = diploma
+
+    @property
+    def start_time(self) -> str:
+        """Gets the start_time of this Education.
+
+
+        :return: The start_time of this Education.
+        :rtype: str
+        """
+        return self._start_time
+
+    @start_time.setter
+    def start_time(self, start_time: str):
+        """Sets the start_time of this Education.
+
+
+        :param start_time: The start_time of this Education.
+        :type start_time: str
+        """
+
+        self._start_time = start_time
 
     @property
     def graduation_time(self) -> str:

@@ -1,4 +1,4 @@
-from yin_resume_api.utils.orm_mongodb import db
+from yin_resume_api.orm_mongodb import db
 
 
 class Work(db.Document):
