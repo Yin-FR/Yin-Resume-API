@@ -69,3 +69,5 @@ target/
 playground*
 
 /.vscode
+
+test_data/
