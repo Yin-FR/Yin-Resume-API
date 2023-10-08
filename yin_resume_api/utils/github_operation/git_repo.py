@@ -24,11 +24,14 @@ class GithubRepoController(GithubBaseController):   # operations of GitHub API
         self.language_repo = {}
         self.language_count = {}
         self.language_percentage = {}
+        self.branch_repo = {}
 
     def init(self):
         logging.info("Initing Github Controller ...")
         logging.info("Retrieving all repos ...")
         self.get_all_repo()
+        logging.info("Retrieving all branches ...")
+        self.get_branches_repos()
         logging.info("Analysing language of all repos ...")
         self.get_language_repo()
         logging.info("Counting bytes of each language for all repos ...")
@@ -45,6 +48,19 @@ class GithubRepoController(GithubBaseController):   # operations of GitHub API
         status, data = get_data_from_url(url, self.headers)
         self.repos = data if status == 200 else self.repos
         return self.repos
+    
+    # get branches of all repos
+    def get_branches_repos(self) -> list:
+        if self.branch_repo:
+            return self.branch_repo
+        self.get_all_repo()
+        repo_names = [repo["name"] for repo in self.repos]
+        for repo_name in tqdm(repo_names):
+            url = os.path.join(self.base_url, "repos/{}/{}/branches".format(self.username, repo_name))
+            status, data = get_data_from_url(url, self.headers)
+            if status == 200:
+                self.branch_repo[repo_name] = data
+        return self.branch_repo
 
     # get the bytes count of each language used in a repo
     def get_language_repo(self) -> dict:

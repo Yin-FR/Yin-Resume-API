@@ -6,9 +6,15 @@ from flask import jsonify
 def bl_get_all_repos(username):
     repos = grc.get_all_repo()
     languages = grc.get_language_repo()
+    branches = grc.get_branches_repos()
     result = []
     for each_repo in repos:
-        cover_url = each_repo["html_url"] + "/blob/master/static/imgs/demo.png?raw=true"
+        branches_info = branches[each_repo["name"]]
+        main_branch_name = "main"
+        for each_branch in branches_info:
+            if each_branch["name"] == "master":
+                main_branch_name = "master"
+        cover_url = each_repo["html_url"] + "/blob/{}/static/imgs/demo.png?raw=true".format(main_branch_name)
         title = " ".join([word.capitalize() for word in each_repo["name"].split("-")])
         language = languages[each_repo["name"]]
         if language:
