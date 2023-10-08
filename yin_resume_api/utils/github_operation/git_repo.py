@@ -8,13 +8,10 @@ logging.getLogger().setLevel(logging.INFO)
 
 
 class GithubRepoController(GithubBaseController):   # operations of GitHub API
-    def __init__(self, id="github", base_url="https://api.github.com",
-                 token_name="GITHUB_ACCESS_TOKEN",
-                 username_name="GITHUB_USERNAME",
+    def __init__(self, username, id="github", base_url="https://api.github.com",
                  **kwargs) -> None:
-        super().__init__(id, base_url, token_name, username_name, **kwargs)
+        super().__init__(id, base_url, username, **kwargs)
         self.headers = {
-            'Authorization': 'Bearer {}'.format(self.token),
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28"
         }

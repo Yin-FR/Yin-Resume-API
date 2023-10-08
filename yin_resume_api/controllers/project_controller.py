@@ -1,15 +1,22 @@
-from yin_resume_api.bussiness_logical.bl_project import bl_get_all_projects
+import connexion
+from typing import Dict
+from typing import Tuple
+from typing import Union
 
-def get_projects(name_id=None):  # noqa: E501
-    """Get the projects information by ID
+from yin_resume_api.models.repo import Repo  # noqa: E501
+from yin_resume_api import util
 
-    Get the projects information # noqa: E501
+from yin_resume_api.bussiness_logical.bl_project import bl_get_all_repos
 
-    :param name_id: ID of the person
-    :type name_id: str
 
-    :rtype: Union[Project, Tuple[Project, int], Tuple[Project, int, Dict[str, str]]
+def get_repos(username):  # noqa: E501
+    """Get the github repos information by username
+
+    Get the git repos information # noqa: E501
+
+    :param username: Username of github
+    :type username: str
+
+    :rtype: Union[List[Repo], Tuple[List[Repo], int], Tuple[List[Repo], int, Dict[str, str]]
     """
-    if name_id:
-        return bl_get_all_projects(name_id=name_id)
-    return bl_get_all_projects()
+    return bl_get_all_repos(username)
