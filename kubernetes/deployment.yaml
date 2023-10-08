@@ -61,6 +61,16 @@ spec:
               secretKeyRef:
                 name: db-user-pass
                 key: mail_admin
+          - name: GITHUB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: db-user-pass
+                key: github-username
+          - name: GITHUB_ACCESS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: db-user-pass
+                key: github-access-token
         resources:
           requests:
             memory: "1Gi"
