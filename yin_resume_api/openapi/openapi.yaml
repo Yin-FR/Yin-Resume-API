@@ -93,16 +93,16 @@ paths:
       tags:
       - user
       x-openapi-router-controller: yin_resume_api.controllers.user_controller
-  /project/projects:
+  /project/repos:
     get:
-      description: Get the projects information
-      operationId: get_projects
+      description: Get the git repos information
+      operationId: get_repos
       parameters:
-      - description: ID of the person
+      - description: Username of github
         explode: false
         in: query
-        name: name_id
-        required: false
+        name: username
+        required: true
         schema:
           type: string
         style: form
@@ -111,16 +111,20 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/project'
+                items:
+                  $ref: '#/components/schemas/repo'
+                type: array
             application/json:
               schema:
-                $ref: '#/components/schemas/project'
+                items:
+                  $ref: '#/components/schemas/repo'
+                type: array
           description: successful operation
         "400":
           description: Invalid ID supplied
         "404":
           description: Person not found
-      summary: Get the projects information by ID
+      summary: Get the github repos information by username
       tags:
       - project
       x-openapi-router-controller: yin_resume_api.controllers.project_controller
@@ -365,32 +369,29 @@ components:
       type: object
       xml:
         name: skill
-    project:
-      description: A breif description of project
+    repo:
+      description: A breif description of github repo
       example:
-        name_id: jackpy
-        name: XXX Service
-        link: https://xxxservice.com
-        github: https://github.com/jackpy/xxxservice
-        desc: A xxx service which is implemented by ABC.
-        pic: xxxservice.png
+        title: Awesome Resume
+        language:
+          JavaScript: 3043
+          HTML: 922
+          CSS: 542
+        main_language: JavaScript
+        description: This is a beautiful template of resume based on ReactJS
       properties:
-        name_id:
+        title:
           type: string
-        name:
+        language:
+          type: object
+        main_language:
           type: string
-        link:
+        description:
           type: string
-        github:
-          type: string
-        desc:
-          type: string
-        pic:
-          type: string
-      title: Project Description
+      title: Github repo breif description
       type: object
       xml:
-        name: project
+        name: repo
     work:
       description: A breif description of professional experience
       example:

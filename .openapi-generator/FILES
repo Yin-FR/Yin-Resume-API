@@ -17,7 +17,7 @@ yin_resume_api/models/__init__.py
 yin_resume_api/models/base_model.py
 yin_resume_api/models/desc.py
 yin_resume_api/models/education.py
-yin_resume_api/models/project.py
+yin_resume_api/models/repo.py
 yin_resume_api/models/send_mail_request.py
 yin_resume_api/models/send_mail_request_receiver.py
 yin_resume_api/models/skill.py

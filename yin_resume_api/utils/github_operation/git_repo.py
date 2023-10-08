@@ -3,6 +3,7 @@ from yin_resume_api.utils.github_operation.git import GithubBaseController
 
 import os
 import logging
+from tqdm import tqdm
 
 logging.getLogger().setLevel(logging.INFO)
 
@@ -25,17 +26,20 @@ class GithubRepoController(GithubBaseController):   # operations of GitHub API
         self.language_percentage = {}
 
     def init(self):
-        logging.info("INITING GITHUB ...")
+        logging.info("Initing Github Controller ...")
+        logging.info("Retrieving all repos ...")
         self.get_all_repo()
+        logging.info("Analysing language of all repos ...")
         self.get_language_repo()
+        logging.info("Counting bytes of each language for all repos ...")
         self.get_language_count()
+        logging.info("Calculating language percentage ...")
         self.get_language_percentage()
         self.inited = True
 
     # get name list of all repos
     def get_all_repo(self) -> list:
-        logging.info("Retrieving all repos ...")
-        if self.inited:
+        if len(self.repos):
             return self.repos
         url = os.path.join(self.base_url, "users/{}/repos".format(self.username))
         status, data = get_data_from_url(url, self.headers)
@@ -44,10 +48,11 @@ class GithubRepoController(GithubBaseController):   # operations of GitHub API
 
     # get the bytes count of each language used in a repo
     def get_language_repo(self) -> dict:
-        logging.info("Analysing language of all repos ...")
+        if self.language_repo:
+            return self.language_repo
         self.get_all_repo()
         repo_names = [repo["name"] for repo in self.repos]
-        for repo_name in repo_names:
+        for repo_name in tqdm(repo_names):
             url = os.path.join(self.base_url, "repos/{}/{}/languages".format(self.username, repo_name))
             status, data = get_data_from_url(url, self.headers)
             if status == 200:
@@ -56,10 +61,11 @@ class GithubRepoController(GithubBaseController):   # operations of GitHub API
     
     # get bytes count of each language in all repos
     def get_language_count(self) -> dict:
-        logging.info("Counting bytes of each language for all repos ...")
+        if self.language_count:
+            return self.language_count
         self.get_language_repo()
         total_language_dict = {}
-        for repo, language_dict in self.language_repo.items():
+        for repo, language_dict in tqdm(self.language_repo.items()):
             for language, byte_number in language_dict.items():
                 if language not in total_language_dict:
                     total_language_dict[language] = byte_number
@@ -70,11 +76,12 @@ class GithubRepoController(GithubBaseController):   # operations of GitHub API
     
     # get percentage of each language (by bytes count) in all repos
     def get_language_percentage(self) -> dict:
-        logging.info("Calculating language percentage ...")
+        if self.language_percentage:
+            return self.language_percentage
         self.get_language_count()
         total_bytes = sum(self.language_count.values())
         if not total_bytes:
             return {}
-        for language, count in self.language_count.items():
+        for language, count in tqdm(self.language_count.items()):
             self.language_percentage[language] = round(count / total_bytes * 100, 2) 
         return self.language_percentage
