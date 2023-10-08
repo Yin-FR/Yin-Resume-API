@@ -8,6 +8,7 @@ def bl_get_all_repos(username):
     languages = grc.get_language_repo()
     result = []
     for each_repo in repos:
+        cover_url = each_repo["html_url"] + "/blob/master/static/imgs/demo.png?raw=true"
         title = " ".join([word.capitalize() for word in each_repo["name"].split("-")])
         language = languages[each_repo["name"]]
         if language:
@@ -19,6 +20,7 @@ def bl_get_all_repos(username):
             "title": title,
             "language": language,
             "description": description,
-            "main_language": main_language
+            "main_language": main_language,
+            "cover_url": cover_url
         })
     return jsonify(result), 200
