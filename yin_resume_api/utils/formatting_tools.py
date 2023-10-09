@@ -6,6 +6,7 @@ def get_repos_formatted(repos, languages, branches):
         for each_branch in branches_info:
             if each_branch["name"] == "master":
                 main_branch_name = "master"
+        url = each_repo["html_url"]
         cover_url = each_repo["html_url"] + "/blob/{}/static/imgs/demo.png?raw=true".format(main_branch_name)
         demo_url = ""
         title = " ".join([word.capitalize() for word in each_repo["name"].split("-")])
@@ -21,6 +22,7 @@ def get_repos_formatted(repos, languages, branches):
             "description": description,
             "main_language": main_language,
             "cover_url": cover_url,
-            "demo_url": demo_url
+            "demo_url": demo_url,
+            "url": url
         })
     return result

@@ -23,6 +23,7 @@ def bl_get_all_repos(username):
                 main_language=each_formatted_repo["main_language"],
                 title=each_formatted_repo["title"],
                 demo_url=each_formatted_repo["demo_url"],
+                url=each_formatted_repo["url"]
             )
             github_repo.save()
         else:

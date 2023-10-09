@@ -7,4 +7,5 @@ class GithubRepo(db.Document):
     title = db.StringField()
     language = db.DictField()
     demo_url = db.StringField()
+    url = db.StringField()
     meta = {'collection': 'github_repo'}
