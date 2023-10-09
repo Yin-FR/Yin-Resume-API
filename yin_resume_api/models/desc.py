@@ -69,7 +69,7 @@ class Desc(Model):
 
         :param dikt: A dict.
         :type: dict
-        :return: The Desc of this Desc.  # noqa: E501
+        :return: The desc of this Desc.  # noqa: E501
         :rtype: Desc
         """
         return util.deserialize_model(dikt, cls)

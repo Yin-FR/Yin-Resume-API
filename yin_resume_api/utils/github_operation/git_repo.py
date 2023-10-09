@@ -38,6 +38,7 @@ class GithubRepoController(GithubBaseController):   # operations of GitHub API
         self.get_language_count()
         logging.info("Calculating language percentage ...")
         self.get_language_percentage()
+        logging.info("Updating database ...")
         self.inited = True
 
     # get name list of all repos

@@ -146,10 +146,10 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Desc'
+                $ref: '#/components/schemas/desc'
             application/json:
               schema:
-                $ref: '#/components/schemas/Desc'
+                $ref: '#/components/schemas/desc'
           description: successful operation
         "400":
           description: Invalid ID supplied
@@ -285,7 +285,7 @@ paths:
       x-openapi-router-controller: yin_resume_api.controllers.resume_controller
 components:
   schemas:
-    Desc:
+    desc:
       description: A description of a person stored in our database
       example:
         name_id: jackpy
@@ -372,6 +372,7 @@ components:
     repo:
       description: A breif description of github repo
       example:
+        cover_url: cover.com
         title: Awesome Resume
         language:
           JavaScript: 3043
@@ -379,7 +380,10 @@ components:
           CSS: 542
         main_language: JavaScript
         description: This is a beautiful template of resume based on ReactJS
+        demo_url: demo.com
       properties:
+        cover_url:
+          type: string
         title:
           type: string
         language:
@@ -387,6 +391,8 @@ components:
         main_language:
           type: string
         description:
+          type: string
+        demo_url:
           type: string
       title: Github repo breif description
       type: object

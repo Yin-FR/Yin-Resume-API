@@ -12,31 +12,46 @@ class Repo(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, title=None, language=None, description=None):  # noqa: E501
+    def __init__(self, cover_url=None, title=None, language=None, main_language=None, description=None, demo_url=None):  # noqa: E501
         """Repo - a model defined in OpenAPI
 
+        :param cover_url: The cover_url of this Repo.  # noqa: E501
+        :type cover_url: str
         :param title: The title of this Repo.  # noqa: E501
         :type title: str
         :param language: The language of this Repo.  # noqa: E501
         :type language: object
+        :param main_language: The main_language of this Repo.  # noqa: E501
+        :type main_language: str
         :param description: The description of this Repo.  # noqa: E501
         :type description: str
+        :param demo_url: The demo_url of this Repo.  # noqa: E501
+        :type demo_url: str
         """
         self.openapi_types = {
+            'cover_url': str,
             'title': str,
             'language': object,
-            'description': str
+            'main_language': str,
+            'description': str,
+            'demo_url': str
         }
 
         self.attribute_map = {
+            'cover_url': 'cover_url',
             'title': 'title',
             'language': 'language',
-            'description': 'description'
+            'main_language': 'main_language',
+            'description': 'description',
+            'demo_url': 'demo_url'
         }
 
+        self._cover_url = cover_url
         self._title = title
         self._language = language
+        self._main_language = main_language
         self._description = description
+        self._demo_url = demo_url
 
     @classmethod
     def from_dict(cls, dikt) -> 'Repo':
@@ -48,6 +63,27 @@ class Repo(Model):
         :rtype: Repo
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def cover_url(self) -> str:
+        """Gets the cover_url of this Repo.
+
+
+        :return: The cover_url of this Repo.
+        :rtype: str
+        """
+        return self._cover_url
+
+    @cover_url.setter
+    def cover_url(self, cover_url: str):
+        """Sets the cover_url of this Repo.
+
+
+        :param cover_url: The cover_url of this Repo.
+        :type cover_url: str
+        """
+
+        self._cover_url = cover_url
 
     @property
     def title(self) -> str:
@@ -92,6 +128,27 @@ class Repo(Model):
         self._language = language
 
     @property
+    def main_language(self) -> str:
+        """Gets the main_language of this Repo.
+
+
+        :return: The main_language of this Repo.
+        :rtype: str
+        """
+        return self._main_language
+
+    @main_language.setter
+    def main_language(self, main_language: str):
+        """Sets the main_language of this Repo.
+
+
+        :param main_language: The main_language of this Repo.
+        :type main_language: str
+        """
+
+        self._main_language = main_language
+
+    @property
     def description(self) -> str:
         """Gets the description of this Repo.
 
@@ -111,3 +168,24 @@ class Repo(Model):
         """
 
         self._description = description
+
+    @property
+    def demo_url(self) -> str:
+        """Gets the demo_url of this Repo.
+
+
+        :return: The demo_url of this Repo.
+        :rtype: str
+        """
+        return self._demo_url
+
+    @demo_url.setter
+    def demo_url(self, demo_url: str):
+        """Sets the demo_url of this Repo.
+
+
+        :param demo_url: The demo_url of this Repo.
+        :type demo_url: str
+        """
+
+        self._demo_url = demo_url
